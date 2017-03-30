@@ -35,13 +35,15 @@ namespace GestionCommande.controleur
         // ajout avec appel du client dao
 
         public void AjoutClient(string nom, string Prenom, string mail, ICollection<Commande>Commandes) 
-        {
-            ClientDao.Clients.Add(new Client() { Nom = nom, Prenom = Prenom, Mail = mail, Commandes = new Collection<Commande>()});
+        {   
+            int idSuperieur = ClientDao.Clients.Count +1;
+            ClientDao.Clients.Add(new Client() { Id = idSuperieur, Nom = nom, Prenom = Prenom, Mail = mail, Commandes = new Collection<Commande>()});
         }
         // ajout avec appel du produit dao
 
         public void AjoutProduit(string designation, int prix)
         {
+            int idSuperieur = ProduitDao.Produits.Count + 1;
             ProduitDao.Produits.Add(new Produit() {Designation = designation, Prix = prix}); 
         }
 
